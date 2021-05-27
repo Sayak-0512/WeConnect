@@ -41,9 +41,31 @@ io.on("connection",socket => {
     })
 
     socket.on("save-document",async data=> {
-        await Document.findByIdAndUpdate(documentId,{data})
+        await Document.findByIdAndUpdate(documentId,{data: data})
     })
-})
+    })
+
+
+    ////////WHITEBOARD/////////
+    socket.on("get-document-whiteboard", async documentId => {
+        const document=await findOrCreateDocument(documentId);
+        socket.join(documentId);
+        socket.emit("load-document-whiteboard",document.whiteboarddata);
+        socket.on("canvas-data" , (data) => {
+            console.log("Hello from canvas");
+            socket.broadcast.emit("received-canvas-data",data);
+        })
+
+
+        socket.on("save-document-whiteboard",async data => {
+            await Document.findByIdAndUpdate(documentId, {whiteboarddata: data})
+        })
+    })
+  
+   
+   
+
+
 });
 
 
@@ -53,5 +75,5 @@ async function findOrCreateDocument(id)
     
     const document= await Document.findById(id);
     if(document) return document
-    return await Document.create({_id: id, data: defaultvalue})
+    return await Document.create({_id: id, whiteboarddata: defaultvalue, data: defaultvalue })
 }
