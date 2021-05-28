@@ -12,6 +12,7 @@ const Videobox = () => {
     const [socket, setSocket] = useState()
     const {id:videoId} = useParams();
     const videoGrid = document.getElementById('video-grid')
+
     useEffect(()=> {
         const s=io("http://localhost:3001");
         setSocket(s);
@@ -51,7 +52,9 @@ const Videobox = () => {
           if (peers[userId]) peers[userId].close()
         })
       })
+      
     }, [socket,videoId])
+    
 
     function addVideoStream(video, stream) {
       video.srcObject = stream
@@ -64,6 +67,7 @@ const Videobox = () => {
     function connectToNewUser(userId, stream) {
       const call = myPeer.call(userId, stream)
       const video = document.createElement('video')
+      
       call.on('stream', userVideoStream => {
         addVideoStream(video, userVideoStream)
       })
@@ -75,8 +79,8 @@ const Videobox = () => {
     }
 
     return (
-     
-        <div id="video-grid">
+
+        <div id="video-grid" className="videoStyleFromDiv">
             {/* <Video srcObject={srcObject}/> */}
         </div>
       

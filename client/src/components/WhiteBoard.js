@@ -3,7 +3,7 @@ import "./whiteboard.css"
 import {io} from "socket.io-client";
 import {useParams} from "react-router-dom";
 import Peer from 'peerjs';
-function WhiteBoard() {
+function WhiteBoard({color,size}) {
 
   const {id: documentId}=useParams();
   var myPeer = new Peer();
@@ -88,6 +88,13 @@ function WhiteBoard() {
   })
   },[socket])
 
+  const [lineColor,setLineColor]=useState('#000000')
+  const [lineSize,setLineSize]=useState(5)
+  useEffect(() => {
+    console.log(size,color,"sc");
+    setLineColor(color);
+    setLineSize(size);
+  }, [color,size])
 
   // useEffect(()=>{
 
@@ -117,7 +124,10 @@ function WhiteBoard() {
 
     var canvas = document.querySelector('#board');
     var ctx = canvas.getContext('2d');
-
+    //ADDED
+    // ctx.strokeStyle=color;
+    // ctx.lineWidth=size;
+    //ADDED
     var sketch = document.querySelector('#sketch');
     var sketch_style = getComputedStyle(sketch);
     canvas.width = parseInt(sketch_style.getPropertyValue('width'));
@@ -138,10 +148,12 @@ function WhiteBoard() {
 
 
     /* Drawing on Paint App */
-    ctx.lineWidth = 5;
+    
+    
+    ctx.lineWidth = lineSize;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = lineColor;
 
     canvas.addEventListener('mousedown', function(e) {
         canvas.addEventListener('mousemove', onPaint, false);
@@ -173,6 +185,9 @@ function WhiteBoard() {
 
   
   },[socket])
+
+
+
 
   return (
     <div id="sketch" className="sketch" >
