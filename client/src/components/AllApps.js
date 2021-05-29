@@ -96,7 +96,9 @@ const AllApps = () => {
               <div className="bottomToolbar">
                 <Grid container alignItems="center">
                   <Grid item xs={2} style={{paddingTop:"1.3%",marginLeft:"10px"}}>
+                  <CopyToClipboard text={meetingId}>
                     <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}}>Copy meeting url</Button>
+                  </CopyToClipboard>
                   </Grid>
                   <Grid item container xs={10} direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
                     <Grid item >
@@ -161,7 +163,9 @@ const AllApps = () => {
                   <div className="bottomToolbar">
                 <Grid container alignItems="center">
                   <Grid item xs={2} style={{paddingTop:"1.3%",marginLeft:"10px"}}>
+                  <CopyToClipboard text={meetingId}>
                     <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}}>Copy meeting url</Button>
+                  </CopyToClipboard>
                   </Grid>
                   <Grid item container xs={10} direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
                     <Grid item >
@@ -225,7 +229,9 @@ const AllApps = () => {
                     <div className="bottomToolbar">
                     <Grid container alignItems="center">
                     <Grid item xs={2} style={{paddingTop:"1.3%",marginLeft:"10px"}}>
+                    <CopyToClipboard text={meetingId}>
                         <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}}>Copy meeting url</Button>
+                    </CopyToClipboard>
                     </Grid>
                     <Grid item container xs={10} direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
                         <Grid item >
