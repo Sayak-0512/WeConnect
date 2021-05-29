@@ -16,11 +16,12 @@ import TextEditor from "../components/TextEditor";
 import VideoBox from "../components/VideoBox";
 import Container from "../components/Container";
 import {useState, useEffect} from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 const AllApps = () => {
+  const history=useHistory();
     const [whiteboardOpen, setwhiteboardOpen] = useState(false)
   const [docsOpen, setdocsOpen] = useState(false)
   const [isVideoMute, setisVideoMute] = useState(false)
@@ -45,11 +46,19 @@ const AllApps = () => {
     setdocsOpen(!docsOpen);
   }
   const leaveCall = ()=>{
+    const video = document.querySelector('#video-grid video');
     // alert("")
     if (window.confirm("Are you sure you want to leave the meeting?")) {
         // window.open(window.location.href, _self)
-        console.log("yes");
-        window.close();
+        // console.log("yes");
+        // if(window.localStream)
+        window.localStream.getVideoTracks()[0].stop();
+        window.localStream.getAudioTracks()[0].stop();
+        // video.src = '';
+       
+        history.push("/");
+        // window.close();
+
     } 
     // else {
     //   txt = "You pressed Cancel!";

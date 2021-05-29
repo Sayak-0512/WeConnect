@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid, Avatar } from "@material-ui/core";
 import {v4 as uuidV4} from "uuid";
 import "./Homecomponent.css";
 import { useHistory } from "react-router";
@@ -17,6 +17,7 @@ function HomeComponent() {
         if(input)
         history.push(`/meeting/${input}`)
     }
+    //https://reputationtoday.in/wp-content/uploads/2020/07/iStock-1215704164-700x395-1.jpg
   return (
     <div className="background">
       <Grid container direction="row">

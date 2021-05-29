@@ -68,6 +68,7 @@ const Videobox = ({isVideoMute,isAudioMute}) => {
         audio: true
       }).then(stream => {
         // myVideoStream = stream;
+        window.localStream=stream;
         setmyVideoStream(stream);
         console.log(myVideoStream,"myvideostream");
         addVideoStream(myVideo, stream)
