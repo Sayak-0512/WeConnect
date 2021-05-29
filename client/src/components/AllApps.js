@@ -70,31 +70,36 @@ const AllApps = () => {
         <div>
             {docsOpen?
           (
+              
             //Doc
             <div className="videoStylefromReact">
               <Grid item container xs={12} direction="row">
-                  <Grid item xs={4} >
+                  <Grid item xs={3} >
                     <VideoBox />
                   </Grid>
                   
-                  <Grid item container xs={8} direction="column" >
+                  <Grid item container xs={9} direction="column" >
                     
                     <Grid item xs={12}>
                       <TextEditor /> 
                     </Grid>
                   </Grid>
-              
+                  {/* 
+                  #3498db 
+                  #ddba00
+                  #ADEFD1FF
+                  */}
               </Grid>
               <div className="bottomToolbar">
                 <Grid container direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
                   <Grid item >
-                    <Button variant="contained" color="primary" onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="contained" color="primary" onClick={toggleDocsBoard}>Toggle Doc</Button>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="contained" color="primary" onClick={()=>setisAudioMute(!isAudioMute)}>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
                       {
                         !isAudioMute?
                         (<MicIcon/>)
@@ -105,7 +110,7 @@ const AllApps = () => {
                       </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="contained" color="primary" onClick={()=>setisVideoMute(!isVideoMute)}>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
                       {
                         !isVideoMute?
                         (<VideocamIcon/>)
@@ -115,7 +120,7 @@ const AllApps = () => {
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="contained" color="primary" onClick={leaveCall}><CallEndIcon/></Button>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
                   </Grid>
                 </Grid>
               
@@ -144,13 +149,13 @@ const AllApps = () => {
                   <div className="bottomToolbar">
                     <Grid container direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
                       <Grid item >
-                        <Button variant="contained" color="primary" onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9",fontFamily:"Poppins"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={toggleDocsBoard}>Toggle Doc</Button>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9",fontFamily:"Poppins"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={()=>setisAudioMute(!isAudioMute)}>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
                         {
                           !isAudioMute?
                           (<MicIcon/>)
@@ -161,17 +166,17 @@ const AllApps = () => {
                         </Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={()=>setisVideoMute(!isVideoMute)}> 
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}> 
                           {
                             !isVideoMute?
-                            (<VideocamIcon/>)
+                            (<VideocamIcon />)
                             :
-                            (<VideocamOffIcon/>)
+                            (<VideocamOffIcon />)
                           }
                         </Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={leaveCall}><CallEndIcon/></Button>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
                       </Grid>
                     </Grid>
                 
@@ -200,13 +205,13 @@ const AllApps = () => {
                   <div className="bottomToolbar" >
                     <Grid container direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
                       <Grid item >
-                        <Button variant="contained" color="primary" onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={toggleDocsBoard}>Toggle Doc</Button>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={()=>setisAudioMute(!isAudioMute)}>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
                         {
                           !isAudioMute?
                           (<MicIcon/>)
@@ -217,7 +222,7 @@ const AllApps = () => {
                         </Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={()=>setisVideoMute(!isVideoMute)}>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
                           {
                             !isVideoMute?
                             (<VideocamIcon/>)
@@ -228,7 +233,7 @@ const AllApps = () => {
                         </Button>
                       </Grid>
                       <Grid item>
-                        <Button variant="contained" color="primary" onClick={leaveCall}><CallEndIcon/></Button>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
                       </Grid>
                     </Grid>
                   </div>
