@@ -130,7 +130,7 @@ function WhiteBoard(props) {
     var sketch_style = getComputedStyle(sketch);
     canvas.width = parseInt(sketch_style.getPropertyValue('width'));
     // canvas.height = parseInt(sketch_style.getPropertyValue('height'));
-    canvas.height = 600;
+    canvas.height = 650;
 
     var mouse = {x: 0, y: 0};
     var last_mouse = {x: 0, y: 0};

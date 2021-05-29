@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import {Grid} from "@material-ui/core";
 import Peer from 'peerjs';
 
-const Videobox = () => {
+const Videobox = ({isVideoMute,isAudioMute}) => {
 
     
     var myPeer = new Peer();
@@ -21,6 +21,38 @@ const Videobox = () => {
         }
       },[])
 
+    // let myVideoStream;
+    const [myVideoStream, setmyVideoStream] = useState()
+    const muteUnmute = () => {
+      const enabled = myVideoStream.getAudioTracks()[0].enabled;
+      if (enabled) {
+        myVideoStream.getAudioTracks()[0].enabled = false;
+        //setUnmuteButton();
+      } else {
+        //setMuteButton();
+        myVideoStream.getAudioTracks()[0].enabled = true;
+      }
+    }
+    
+    const playStop = () => {
+      //console.log('object')
+      let enabled = myVideoStream.getVideoTracks()[0].enabled;
+      if (enabled) {
+        myVideoStream.getVideoTracks()[0].enabled = false;
+        //setPlayVideo()
+      } else {
+        //setStopVideo()
+        myVideoStream.getVideoTracks()[0].enabled = true;
+      }
+    }
+    useEffect(() => {
+      if(myVideoStream)
+        playStop()
+    }, [isVideoMute])
+    useEffect(() => {
+      if(myVideoStream)
+        muteUnmute()
+    }, [isAudioMute])
 
     useEffect(() => {
         
@@ -35,6 +67,9 @@ const Videobox = () => {
         video: true,
         audio: true
       }).then(stream => {
+        // myVideoStream = stream;
+        setmyVideoStream(stream);
+        console.log(myVideoStream,"myvideostream");
         addVideoStream(myVideo, stream)
         myPeer.on('call', call => {
           call.answer(stream)

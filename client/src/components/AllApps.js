@@ -75,7 +75,10 @@ const AllApps = () => {
             <div className="videoStylefromReact">
               <Grid item container xs={12} direction="row">
                   <Grid item xs={3} >
-                    <VideoBox />
+                    <VideoBox 
+                    isVideoMute={isVideoMute}
+                    isAudioMute={isAudioMute}
+                    />
                   </Grid>
                   
                   <Grid item container xs={9} direction="column" >
@@ -91,42 +94,48 @@ const AllApps = () => {
                   */}
               </Grid>
               <div className="bottomToolbar">
-                <Grid container direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
-                  <Grid item >
-                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                <Grid container alignItems="center">
+                  <Grid item xs={2} style={{paddingTop:"1.3%",marginLeft:"10px"}}>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}}>Copy meeting url</Button>
                   </Grid>
-                  <Grid item>
-                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
-                      {
-                        !isAudioMute?
-                        (<MicIcon/>)
-                        :
-                        (<MicOffIcon/>)
-              
-                      }
-                      </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
-                      {
-                        !isVideoMute?
-                        (<VideocamIcon/>)
-                        :
-                        (<VideocamOffIcon/>)
-                      }
-                    </Button>
-                  </Grid>
-                  <Grid item>
+                  <Grid item container xs={10} direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
+                    <Grid item >
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
+                        {
+                            !isAudioMute?
+                            (<MicIcon/>)
+                            :
+                            (<MicOffIcon/>)
+                
+                        }
+                        </Button>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
+                        {
+                            !isVideoMute?
+                            (<VideocamIcon/>)
+                            :
+                            (<VideocamOffIcon/>)
+                        }
+                        </Button>
+                    </Grid>
+                    <Grid item>
                     <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
+                  </Grid>
                   </Grid>
                 </Grid>
               
               </div>
             
             </div>
+          
           )
           :
           (
@@ -137,7 +146,10 @@ const AllApps = () => {
                 <div className="videoStylefromReact">
                   <Grid item container xs={12} direction="row">
                       <Grid item xs={3}>
-                        <VideoBox />
+                        <VideoBox 
+                        isVideoMute={isVideoMute}
+                        isAudioMute={isAudioMute}
+                        />
                       </Grid>
                       <Grid item container xs={9} direction="row">
                         
@@ -147,40 +159,45 @@ const AllApps = () => {
                       </Grid>
                   </Grid>
                   <div className="bottomToolbar">
-                    <Grid container direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
-                      <Grid item >
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9",fontFamily:"Poppins"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9",fontFamily:"Poppins"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
-                      </Grid>
-                      <Grid item>
+                <Grid container alignItems="center">
+                  <Grid item xs={2} style={{paddingTop:"1.3%",marginLeft:"10px"}}>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}}>Copy meeting url</Button>
+                  </Grid>
+                  <Grid item container xs={10} direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
+                    <Grid item >
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
+                    </Grid>
+                    <Grid item>
                         <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
                         {
-                          !isAudioMute?
-                          (<MicIcon/>)
-                          :
-                          (<MicOffIcon/>)
-              
+                            !isAudioMute?
+                            (<MicIcon/>)
+                            :
+                            (<MicOffIcon/>)
+                
                         }
                         </Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}> 
-                          {
-                            !isVideoMute?
-                            (<VideocamIcon />)
-                            :
-                            (<VideocamOffIcon />)
-                          }
-                        </Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
-                      </Grid>
                     </Grid>
-                
-                  </div>
+                    <Grid item>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
+                        {
+                            !isVideoMute?
+                            (<VideocamIcon/>)
+                            :
+                            (<VideocamOffIcon/>)
+                        }
+                        </Button>
+                    </Grid>
+                    <Grid item>
+                    <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
+                  </Grid>
+                  </Grid>
+                </Grid>
+              
+              </div>
             
                 </div>
 
@@ -191,9 +208,12 @@ const AllApps = () => {
                 // only video
 
                 <div className="">
-                  <Grid item container xs={12} direction="row">
+                    <Grid item container xs={12} direction="row">
                     <Grid item xs={12}>
-                      <VideoBox />
+                      <VideoBox 
+                      isVideoMute={isVideoMute}
+                      isAudioMute={isAudioMute}
+                      />
                     </Grid>
                     <Grid item container xs={9} direction="row">
                       
@@ -202,41 +222,47 @@ const AllApps = () => {
                       {/* </Grid> */}
                     </Grid>
                 </Grid>
-                  <div className="bottomToolbar" >
-                    <Grid container direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
-                      <Grid item >
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
-                        {
-                          !isAudioMute?
-                          (<MicIcon/>)
-                          :
-                          (<MicOffIcon/>)
-                
-                        }
-                        </Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
-                          {
-                            !isVideoMute?
-                            (<VideocamIcon/>)
-                            :
-                            (<VideocamOffIcon/>)
-                          }
-                          
-                        </Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
-                      </Grid>
+                    <div className="bottomToolbar">
+                    <Grid container alignItems="center">
+                    <Grid item xs={2} style={{paddingTop:"1.3%",marginLeft:"10px"}}>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}}>Copy meeting url</Button>
                     </Grid>
-                  </div>
+                    <Grid item container xs={10} direction="row" spacing={5} justify="center" alignItems="center" style={{paddingTop:"1.3%"}}>
+                        <Grid item >
+                            <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleWhiteBoard}>Toggle Whiteboard</Button>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={toggleDocsBoard}>Toggle Doc</Button>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisAudioMute(!isAudioMute)}>
+                            {
+                                !isAudioMute?
+                                (<MicIcon/>)
+                                :
+                                (<MicOffIcon/>)
+                    
+                            }
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" style={{color:"white",backgroundColor:"#2980b9"}} onClick={()=>setisVideoMute(!isVideoMute)}>
+                            {
+                                !isVideoMute?
+                                (<VideocamIcon/>)
+                                :
+                                (<VideocamOffIcon/>)
+                            }
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                        <Button variant="contained" style={{color:"white",backgroundColor:"#e74c3c"}} onClick={leaveCall}><CallEndIcon/></Button>
+                    </Grid>
+                    </Grid>
+                    </Grid>
+              
+                </div>
+            
                 </div>
 
               ) 
