@@ -22,7 +22,8 @@ function Container() {
     const [color,setColor] = useState("#000000")
     const [brushsize,setBrushsize] = useState(5) 
     const [lastColor,setLastColor] = useState('white')
-    const [lastSize,setLastSize] = useState(10);
+    const [lastSize,setLastSize] = useState(30);
+    const [clearScreenTrue, setclearScreenTrue] = useState(false)
     console.log(color,brushsize,"CB");
     const [age, setAge] = React.useState('');
   const handleChange = (event) => {
@@ -43,47 +44,43 @@ function Container() {
                     <option>30</option>
                 </select>
             </div> */}
-            <Grid container direction="row" spacing={2} justify="center" alignItems="center">
+            <Grid container direction="row" spacing={5} justify="center" alignItems="center">
                 <Grid item>
                     <input type="color" value={color} onChange={(e)=>setColor(e.target.value)}/>
                 </Grid>
-                <Grid item>
-                    Brush size:
-                </Grid>
+                {/* <Grid item style={{fontWeight:500}}>
+                    BRUSH SIZE:
+                </Grid> */}
                 
-                <Grid item >
-                    <FormControl variant="outlined" className={classes.margin} >
-                    {/* <InputLabel id="demo-customized-select-label"></InputLabel> */}
-                    <Select
-                    style={{height:"30px"}}
-                    labelId="demo-customized-select-label"
-                    id="demo-customized-select"
-                    value={brushsize}
-                    onChange={(e)=>{setBrushsize(e.target.value)}}
-                    // input={<BootstrapInput />}
-                    >
-                    <MenuItem value={5}>
-                        <em>5</em>
-                    </MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={20}>20</MenuItem>
-                    <MenuItem value={30}>30</MenuItem>
-                    </Select>
-                </FormControl>
-                        {/* <FormControl className={classes.margin}>
-                            <InputLabel htmlFor="demo-customized-select-label"></InputLabel>
-                            <NativeSelect
-                            id="demo-customized-select-label"
-                            value={brushsize}
-                            onChange={(e)=>{setBrushsize(e.target.value)}}
-                            // input={<BootstrapInput />}
-                            >
-                            <option>5</option>
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            </NativeSelect>
-                        </FormControl> */}
+                <Grid item container xs={4} alignItems="center" justify="right">
+                    <Grid item>
+                    <div style={{fontWeight:500}}>BRUSH SIZE:</div>
+                    </Grid>
+                    <Grid item>
+                    
+                        <FormControl variant="outlined" className={classes.margin} >
+                        {/* <InputLabel id="demo-customized-select-label"></InputLabel> */}
+                        
+                        <Select
+                        style={{height:"30px"}}
+                        labelId="demo-customized-select-label"
+                        id="demo-customized-select"
+                        value={brushsize}
+                        onChange={(e)=>{setBrushsize(e.target.value)}}
+                        // input={<BootstrapInput />}
+                        >
+                        <MenuItem value={5}>
+                            <em>5</em>
+                        </MenuItem>
+                        <MenuItem value={10}>10</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={30}>30</MenuItem>
+                        </Select>
+                    </FormControl>
+                    
+                    </Grid>
+                    
+                
                 </Grid>
                 
                 <Grid item >
@@ -108,10 +105,18 @@ function Container() {
                         <img src={eraser} alt="" style={{height:"18px",widht:"18px"}} />
                     </Button>
                 </Grid>
+                <Grid item>
+                    <Button 
+                    variant="contained"
+                    
+                    onClick={()=>setclearScreenTrue(true)}>
+                        Clear Screen
+                    </Button>
+                </Grid>
             </Grid>
 
             <div className="board-container">
-                <WhiteBoard color={color} size={brushsize} />
+                <WhiteBoard color={color} size={brushsize} clearScreenTrue={clearScreenTrue} setclearScreenTrue={setclearScreenTrue}/>
             </div>
         </div>
     )

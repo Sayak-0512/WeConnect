@@ -4,10 +4,10 @@ body {
     background-color: #272822;
   }
   
-  .background {
+  /* .background {
     margin-top: 300px;
     text-align: center;
-  }
+  } */
   .heading {
     /* font-family: 'Cedarville Cursive', cursive; */
     font-size: 300%;

@@ -187,14 +187,24 @@ function WhiteBoard(props) {
     //console.log(size,color,"sc");
     setLineColor(props.color);
     setLineSize(props.size);
-    console.log(props.size,props.color,"sadasdasd");
+    console.log(props,"propsd");
      ctx.lineWidth = lineSize;
     //ctx.lineWidth = props.size;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     //ctx.strokeStyle = props.color;
      ctx.strokeStyle = lineColor;
-  }, [props.size,props.color,lineSize,lineColor])
+
+     //mew 
+     if(props.clearScreenTrue){
+       console.log('crear');
+      ctx.fillStyle='white'
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      props.setclearScreenTrue(false);
+     }
+        
+     //
+  }, [props.size,props.color,lineSize,lineColor,props.clearScreenTrue])
 
 
   return (

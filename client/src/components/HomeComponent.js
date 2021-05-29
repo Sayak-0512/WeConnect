@@ -19,20 +19,54 @@ function HomeComponent() {
     }
   return (
     <div className="background">
-      <h1 className="heading">Welcome to WeMeet</h1>
+      <Grid container direction="row">
+        <Grid item container xs={8} justify="center" alignItems="center" >
+          <Grid item style={{marginTop:"200px"}}>
+            <h1 className="heading">Welcome to WeMeet</h1>
+          </Grid>
+          <Grid container justify="center" alignItems="center" spacing={1} direction="column">
+            <Grid item >
+                  <Button variant="contained" onClick={handleCreate} style={{padding:"10px 65px"}}>CREATE A ROOM</Button>
+              </Grid>
+              <Grid container item direction="row" spacing={2} justify="center" alignItems="center">
+                <Grid item>
+                    <textarea rows="2.5"  value={input} onChange={(e)=> setInput(e.target.value)} placeholder="Enter the link"></textarea>
+                </Grid>
+                <Grid item>
+                    <Button variant="contained" onClick={handleJoin} >JOIN</Button>
+                </Grid>
+              </Grid>
+          </Grid>
+        </Grid>
+        <Grid item container xs={4} direction="column" justify="center"  spacing={3}>
+          <Grid item style={{fontSize:"220%",marginTop:"50px"}}>
+          Live meeting with real 
+          time text editing and whiteboard.
+          </Grid>
+          <Grid item>
+          Interviews
+          </Grid>
+          <Grid item>
+          Meetings
+          </Grid>
+          <Grid item>
+          Friends hang out
+          </Grid>
+          <Grid item>
+          Brainstorming ideas 
+          </Grid>
+          <Grid item>
+          Online Teaching
+          </Grid>
+          <Grid item>
+          Brainstorming ideas 
+          </Grid>
+        </Grid>
+    
+      </Grid>
       
-      <Grid container justify="center" spacing={2} alignItems="center">
-      <Grid item>
-             <Button variant="contained" onClick={handleCreate} >CREATE A ROOM</Button>
-        </Grid>
-        <Grid item>
-            <textarea rows="2.5"  value={input} onChange={(e)=> setInput(e.target.value)} placeholder="Enter the link"></textarea>
-        </Grid>
-        <Grid item>
-            <Button variant="contained" onClick={handleJoin} >JOIN</Button>
-        </Grid>
-       
-    </Grid>
+      
+      
     </div>
   );
 }
