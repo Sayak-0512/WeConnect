@@ -87,11 +87,7 @@ const AllApps = () => {
                       <TextEditor /> 
                     </Grid>
                   </Grid>
-                  {/* 
-                  #3498db 
-                  #ddba00
-                  #ADEFD1FF
-                  */}
+                  
               </Grid>
               <div className="bottomToolbar">
                 <Grid container alignItems="center">
