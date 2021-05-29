@@ -10,6 +10,7 @@ import {v4 as uuidV4} from "uuid";
 
 
 import AllApps from "./components/AllApps";
+import HomeComponent from "./components/HomeComponent";
 
 function App() {
   
@@ -17,7 +18,7 @@ function App() {
     <Router >
       <Switch>
         <Route path="/" exact>
-          <Redirect to={`/meeting/${uuidV4()}`} />
+          <HomeComponent /> 
         </Route>
         <Route path="/meeting/:id" >
           <AllApps/>

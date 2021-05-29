@@ -6,11 +6,18 @@ import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import CallEndIcon from '@material-ui/icons/CallEnd';
 import {Button, Grid} from "@material-ui/core";
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 import TextEditor from "../components/TextEditor";
 import VideoBox from "../components/VideoBox";
 import Container from "../components/Container";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import { useParams } from 'react-router';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 const AllApps = () => {
@@ -18,6 +25,16 @@ const AllApps = () => {
   const [docsOpen, setdocsOpen] = useState(false)
   const [isVideoMute, setisVideoMute] = useState(false)
   const [isAudioMute, setisAudioMute] = useState(false)
+  const [open, setOpen] = React.useState(false);
+  const {id: meetingId}=useParams();
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const toggleWhiteBoard=()=>{
     setdocsOpen(false);
     setwhiteboardOpen(!whiteboardOpen);
@@ -39,6 +56,16 @@ const AllApps = () => {
     // }
     
   }
+
+
+  useEffect(() => {
+    const timer=setTimeout(() => {
+      setOpen(true);
+    },2000)
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [])
     return (
         <div>
             {docsOpen?
@@ -219,9 +246,36 @@ const AllApps = () => {
             <Container />
           </Grid> */}
         
-          
-        
-        </div>
+{/*         
+            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+              Open alert dialog
+            </Button>  */}
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title" style={{textAlign: "center"}}> Your meeting is ready</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Share this code with others that you want in the meeting.
+                </DialogContentText>
+                <DialogContentText id="alert-dialog-description">
+                   Click here to copy to clipboard.
+                </DialogContentText>
+                <CopyToClipboard text={meetingId}>
+                  <Button variant="contained" onClick={handleClose}>{meetingId} <FileCopyIcon style={{margin: "2px"}}/></Button>
+                </CopyToClipboard>
+              </DialogContent>
+              <DialogActions>
+                <Button variant="contained" style={{margin: "auto"}} onClick={handleClose} color="primary">
+                  CLOSE
+                </Button>
+                
+              </DialogActions>
+            </Dialog>
+    </div>
     )
 }
 
