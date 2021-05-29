@@ -3,8 +3,9 @@ import "./whiteboard.css"
 import {io} from "socket.io-client";
 import {useParams} from "react-router-dom";
 import Peer from 'peerjs';
-function WhiteBoard({color,size}) {
+function WhiteBoard(props) {
 
+  console.log(props,"pros")
   const {id: documentId}=useParams();
   var myPeer = new Peer();
   const [socket,setSocket]=useState();
@@ -88,13 +89,10 @@ function WhiteBoard({color,size}) {
   })
   },[socket])
 
+  
   const [lineColor,setLineColor]=useState('#000000')
   const [lineSize,setLineSize]=useState(5)
-  useEffect(() => {
-    console.log(size,color,"sc");
-    setLineColor(color);
-    setLineSize(size);
-  }, [color,size])
+ 
 
   // useEffect(()=>{
 
@@ -150,11 +148,6 @@ function WhiteBoard({color,size}) {
     /* Drawing on Paint App */
     
     
-    ctx.lineWidth = lineSize;
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = lineColor;
-
     canvas.addEventListener('mousedown', function(e) {
         canvas.addEventListener('mousemove', onPaint, false);
     }, false);
@@ -186,7 +179,22 @@ function WhiteBoard({color,size}) {
   
   },[socket])
 
-
+  
+  useEffect(() => {
+    var canvas = document.querySelector('#board');
+  
+    var ctx= canvas.getContext('2d');
+    //console.log(size,color,"sc");
+    setLineColor(props.color);
+    setLineSize(props.size);
+    console.log(props.size,props.color,"sadasdasd");
+     ctx.lineWidth = lineSize;
+    //ctx.lineWidth = props.size;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    //ctx.strokeStyle = props.color;
+     ctx.strokeStyle = lineColor;
+  }, [props.size,props.color,lineSize,lineColor])
 
 
   return (

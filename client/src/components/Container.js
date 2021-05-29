@@ -2,8 +2,9 @@ import React,{useState} from 'react'
 import WhiteBoard from './WhiteBoard'
 import "./container.css";
 function Container() {
-    const [color,setColor] = useState("#000")
+    const [color,setColor] = useState("#000000")
     const [brushsize,setBrushsize] = useState(5) 
+    console.log(color,brushsize,"CB");
     return (
         <div className="container">
             <div className="color-picker-container">
