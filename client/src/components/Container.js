@@ -22,6 +22,7 @@ function Container() {
     const [color,setColor] = useState("#000000")
     const [brushsize,setBrushsize] = useState(5) 
     const [lastColor,setLastColor] = useState('white')
+    const [lastSize,setLastSize] = useState(10);
     console.log(color,brushsize,"CB");
     const [age, setAge] = React.useState('');
   const handleChange = (event) => {
@@ -94,9 +95,12 @@ function Container() {
                                  :{}   
                     }
                     onClick={(e)=>{
-                        var temp=color;
+                        var tempColor=color;
+                        var tempSize=brushsize;
                         setColor(lastColor);
-                        setLastColor(temp);
+                        setBrushsize(lastSize);
+                        setLastColor(tempColor);
+                        setLastSize(tempSize);
                         // setBrushsize(20);
 
                     }}>
